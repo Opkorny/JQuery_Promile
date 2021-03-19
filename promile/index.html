@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="jumbotron-fluid bg-danger p-5">
+        <h1 class="text-white text-center display-2">Promile v krvi</h1>
+    </header>
+    <main class="container">
+        <h2 class="bg-warning text-white text-uppercase text-center p-3 mt-3">Kalkulačka pro výpočet zbytkového alkoholu v
+            krvi</h2>
+        <div class="container">
+            <form>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Pohlaví konzumenta</label>
+                    <div class="col-sm-4">
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="sex" id="man" value="man"> Muž
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="sex" id="woman" value="woman"> Žena
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="weight" class="col-sm-4 col-form-label">Váha v kg konzumenta</label>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" name="weight" id="weight" value="80" min="1">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Vypitý alkohol</label>
+                    <div class="col-sm-8">
+                        <div class="form-check form-check-inline col-sm-12 form-group row">
+                            <label class="form-check-label col-sm-4">
+                                <input class="form-check-input" type="checkbox" name="alcohol" id="tvrdy" value="tvrdy">
+                                Tvrdý alkohol
+                            </label>
+                            <div class="col-sm-6" id="div_tvrdy">
+                                <label>Množství (panák - 5cl): <input type="number" class="form-control" name="m_tvrdy" id="m_tvrdy"
+                                        value="1" min="1"></label>
+                            </div>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-12 form-group row">
+                            <label class="form-check-label col-sm-4">
+                                <input class="form-check-input" type="checkbox" name="alcohol" id="pivo" value="pivo">
+                                Pivo 12°
+                            </label>
+                        <div class="col-sm-6">
+                            <label>Množství (půllitr - 5dcl): <input type="number" class="form-control" name="m_pivo" id="m_pivo"
+                                    value="1" min="1"></label>
+                        </div>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-12 form-group row">
+                            <label class="form-check-label col-sm-4">
+                                <input class="form-check-input" type="checkbox" name="alcohol" id="vino" value="vino">
+                                Víno
+                            </label>
+                            <div class="col-sm-6">
+                                <label>Množství (sklenička - 3dcl): <input type="number" class="form-control" name="m_vino" id="m_vino"
+                                        value="1" min="1"></label>
+                            </div>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-12 form-group row">
+                            <label class="form-check-label col-sm-4">
+                                <input class="form-check-input" type="checkbox" name="alcohol" id="jine" value="jine">
+                                Jiné
+                            </label>
+                            <div class="col-sm-3">
+                                <label>% Alkoholu: <input type="number" class="form-control" name="p_jine" id="p_jine"
+                                        value="20" min="0" max="100"></label>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Množství (dcl): <input type="number" class="form-control" name="m_jine" id="m_jine"
+                                        value="5" min="1"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="weight" class="col-sm-4 col-form-label">Uplynulý čas od konzumace (h)</label>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" name="time" id="time" value="1" min="1">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-4 col-sm-4">
+                        <button type="button" id="calc" class="btn btn-success">Vypočítat</button>
+                    </div>
+                </div>
+            </form>
+            <hr>
+            <div id="result" class="display-4">Zde budou promile</div>
+        </div>
+    </main>
+    <footer class="container-fluid">
+        <hr>
+        <div class="text-center">&copy; Lukáš Korzonek - 2021 - IT4</div>
+        <hr>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="js/promile.js"></script>
+</body>
+
+</html>
